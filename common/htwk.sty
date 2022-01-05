@@ -1,0 +1,152 @@
+%-----------------------------------------------------------------------------
+% Veränderungen am Layout
+%-----------------------------------------------------------------------------
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+%\usepackage[singlespacing]{setspace}  % 1 Zeile Abstand
+%\usepackage[onehalfspacing]{setspace} % 1,5 Zeilen Abstand
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.15} 
+
+% Schriftarten einbinden
+\usepackage[T1]{fontenc}
+\usepackage[scaled=.92]{helvet}           % Helvetica
+\renewcommand\familydefault{\sfdefault} 
+
+\setkomafont{author}{\normalfont}
+\setkomafont{date}{\normalfont}
+
+\setkomafont{section}{\fontsize{13bp}{18.8bp}\selectfont\bfseries}
+
+\usepackage{longtable}
+\usepackage[german]{babel}
+
+%-----------------------------------------------------------------------------
+% Abbildungen
+%-----------------------------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{img/}}							            % Globales Abbildungsverzeichnis
+
+%-----------------------------------------------------------------------------
+% Bild- und Tabellenunterschriften
+%-----------------------------------------------------------------------------
+\usepackage{caption}											    % Aussehen der Captions
+\captionsetup{
+%  margin = 10pt,
+   margin = 0pt,
+%  font = {small,rm},
+%  labelfont = {small,bf},
+   format = plain, 														% 'plain' oder 'hang'
+   indention = 0em,  													% Einrücken der Beschriftung,
+%  labelsep = newline, 												% colon, period, space, quad, newline
+   justification = justified		 							% justified, centering, RaggedRight
+%  singlelinecheck = true, 										% false (true=bei einer Zeile immer zentrieren)
+%  figureposition= bottom 										% Abbildungsbeschriftung: bottom/top
+%  tableposition = top 												% Tabellenbeschriftung: bottom/top
+}
+\captionsetup[table]{
+	position = top,															% Tabellenbeschriftung: bottom/top	
+	singlelinecheck = true,
+	font = {stretch=1.2, small},								% kleine Schriftgröße, 120% Zeilenabstand
+  labelfont = {small, bf},										% kleine Schriftgröße, normale Schrift
+  labelsep = space														% colon, period, space, quad, newline
+}
+
+\captionsetup[figure]{
+	position = bottom,													% Abbildungsbeschriftung: bottom/top
+	singlelinecheck = true,
+	font = {stretch=1.2, small},
+  %labelfont = {small, bf},
+  labelfont = {small},
+	labelsep = colon 														% colon, period, space, quad, newline
+}
+
+%\addto\captionsngerman{											% Neukonfiguration der Abkürzungen unter Bildern/Tabellen
+%   \renewcommand{\figurename}{Abbildung}			% Abbildung => Abb.
+%   \renewcommand{\tablename}{Tabelle}}				% Tabelle   => Tab.
+
+\setlength{\captionmargin}{20pt}				      % Abstand zum Rand der Bildunterschrift
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\textfraction}{0.1}
+
+% Änderung des Zeilenabstands in Listen
+\newcommand{\firmlist}{\setlength{\itemsep}{0.5\itemsep}\setlength{\parskip}{0.5\parskip}}
+\newcommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%-----------------------------------------------------------------------------
+% SI-Einheiten
+% Anleitung: https://www.namsu.de/Extra/pakete/Siunitx.html
+%-----------------------------------------------------------------------------
+\usepackage[locale=DE, binary-units=true]{siunitx}	% Formatierung von Zahlen
+
+% Zusätzliche Farben
+\usepackage{xcolor}
+\definecolor{dunkelgrau}{gray}{0.05}
+\definecolor{hellgrau}{gray}{0.90}
+\definecolor{blue}{rgb}{0.0,0.5,1.0}
+
+%-----------------------------------------------------------------------------
+% Formatierung von Code
+% Anleitung: https://ctan.org/pkg/minted?lang=de
+%-----------------------------------------------------------------------------
+\usepackage[newfloat]{minted}
+
+% Hintergrundfarbe für Quellcodes
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+%\newenvironment{code}{\captionsetup{type=listing,justification=raggedright,singlelinecheck=false, format=hang}}{}
+\newenvironment{code}{\captionsetup{type=listing,labelfont={bf},name={Listing},labelsep=colon,belowskip=-10pt,parskip=0pt}}{}
+\SetupFloatingEnvironment{listing}{name=Listing}
+
+% Styles für unterschiedliche Programmiersprachen
+\setminted[c]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg, breaklines}
+\setminted[python]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg}
+\setminted[matlab]{baselinestretch=1.0, fontsize=\footnotesize}
+\usemintedstyle{vs}
+%\setminted[c]{frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, bgcolor=bg}
+%\setminted[c]{frame=lines, framesep=2mm, baselinestretch=1.0, fontsize=\footnotesize}
+
+%% fix the minted@colorbg environment
+%\makeatletter
+\renewenvironment{minted@colorbg}[1]
+ {\def\minted@bgcol{#1}%
+  \noindent
+  \begin{lrbox}{\minted@bgbox}
+  \begin{minipage}{\linewidth-2\fboxsep}}
+ {\end{minipage}%
+  \end{lrbox}%
+  \setlength{\topsep}{\bigskipamount}% set the vertical space
+  \trivlist\item\relax % ensure going to a new line
+  \colorbox{\minted@bgcol}{\usebox{\minted@bgbox}}%
+  \endtrivlist % close the trivlist
+  \unskip % fix large distance between minted and caption
+ }
+\makeatother
+
+\parindent 0in
+\parskip 5pt
+
+%-----------------------------------------------------------------------------
+% griech. Symbole im Text
+%-----------------------------------------------------------------------------
+\usepackage{textgreek}
+
+%-----------------------------------------------------------------------------
+% betragsstriche
+%-----------------------------------------------------------------------------
+\usepackage{amsmath}
+
+%-----------------------------------------------------------------------------
+% abbildungen fest in den text
+%-----------------------------------------------------------------------------
+\usepackage{float}
+
+%-----------------------------------------------------------------------------
+% PDF-Formular
+%-----------------------------------------------------------------------------
+\usepackage[
+  pdftex,
+  pdftitle={Titel},
+  pdfauthor={Autor},
+]{hyperref}
+\renewcommand{\LayoutChoiceField}[2]{\leavevmode #2 #1}
+\renewcommand*{\arraystretch}{1.5}
