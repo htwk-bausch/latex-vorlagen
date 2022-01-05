@@ -2,15 +2,20 @@
 % Veränderungen am Layout
 %-----------------------------------------------------------------------------
 \usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
-%\usepackage[singlespacing]{setspace}  % 1 Zeile Abstand
-%\usepackage[onehalfspacing]{setspace} % 1,5 Zeilen Abstand
+
 \usepackage{setspace}
-\renewcommand{\baselinestretch}{1.15} 
+\renewcommand{\baselinestretch}{1.15} % Zeilenabstand: 1.15
 
 % Schriftarten einbinden
 \usepackage[T1]{fontenc}
-\usepackage[scaled=.92]{helvet}           % Helvetica
-\renewcommand\familydefault{\sfdefault} 
+\usepackage{fourier}				                  % Globale Standard-Schriftart
+\usepackage[scaled=.9]{helvet}                % Schrift für Überschriften
+\usepackage[scaled]{inconsolata}              % Schrift für Quellcodes
+
+\addtokomafont{disposition}{\sffamily}        % Änderung der Überschriften
+
+\usepackage{ellipsis} 					              % Intelligente \dots
+\usepackage{color}
 
 \setkomafont{author}{\normalfont}
 \setkomafont{date}{\normalfont}
@@ -90,17 +95,21 @@
 %-----------------------------------------------------------------------------
 \usepackage[newfloat]{minted}
 
+\BeforeBeginEnvironment{code}{\medskip}
+\AfterEndEnvironment{code}{\medskip}
+
 % Hintergrundfarbe für Quellcodes
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 
 %\newenvironment{code}{\captionsetup{type=listing,justification=raggedright,singlelinecheck=false, format=hang}}{}
-\newenvironment{code}{\captionsetup{type=listing,labelfont={bf},name={Listing},labelsep=colon,belowskip=-10pt,parskip=0pt}}{}
+\newenvironment{code}{\captionsetup{type=listing,labelfont={bf},name={Listing},labelsep=colon,belowskip=-10pt,parskip=0pt,font=small}}{}
 \SetupFloatingEnvironment{listing}{name=Listing}
 
 % Styles für unterschiedliche Programmiersprachen
 \setminted[c]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg, breaklines}
 \setminted[python]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg}
-\setminted[matlab]{baselinestretch=1.0, fontsize=\footnotesize}
+\setminted[verilog]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg, breaklines}
+
 \usemintedstyle{vs}
 %\setminted[c]{frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, bgcolor=bg}
 %\setminted[c]{frame=lines, framesep=2mm, baselinestretch=1.0, fontsize=\footnotesize}

@@ -1,5 +1,10 @@
 .DS_Store
+
+// Unwanted LaTex files
 *.aux
 *.log
 *.out
 *.pdf
+*.fls
+*.synctex.gz
+*.fdb_latexmk
