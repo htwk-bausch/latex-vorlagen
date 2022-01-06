@@ -157,11 +157,34 @@
 %-----------------------------------------------------------------------------
 % PDF-Formular
 %-----------------------------------------------------------------------------
-\usepackage[
-  pdftex,
-  pdftitle={Titel},
-  pdfauthor={Autor},
-]{hyperref}
+%\usepackage[
+%  pdftex,
+%  pdftitle={Titel},
+%  pdfauthor={Autor},
+%]{hyperref}
+
+\usepackage[pdfa]{hyperref} 
+\hypersetup{
+		pdftitle      = {\title{}},
+	  pdfauthor     = {\author{}},
+%	  pdfsubject    = {},
+%	  pdfkeywords   = {},
+	  plainpages    = false,
+	  pdfpagelayout = TwoPageRight,
+	  pdfpagelabels = true,
+%	  pdffitwindow=true,
+%	  pdfview=FitB,
+%	  pdftoolbar=true,
+%	  pdfstartview=FitV,
+	  colorlinks=true,
+	  bookmarksopen=false,
+	  bookmarksnumbered=true,
+	  bookmarksopenlevel=0,
+	  linkcolor=black,
+	  citecolor=blue,
+	  urlcolor=blue  
+}
+
 \renewcommand{\LayoutChoiceField}[2]{\leavevmode #2 #1}
 \renewcommand*{\arraystretch}{1.5}
 
@@ -178,3 +201,14 @@
   \uline{\phantom{#1}}%
   \llap{\contour{white}{#1}}%
 }
+
+% Verbesserung des URL-Stils
+% http://www.kronto.org/thesis/tips/url-formatting.html
+\usepackage{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
