@@ -11,6 +11,11 @@ Im Ordner `common/` befinden sich Dateien, die gemeinsam genutzt werden sowohl f
 Zur Formatierung von Quellcode wurde die `minted`-Umgebung (https://ctan.org/pkg/minted) eingebunden. Zur Formatierung von Quellcode benötigt `minted` das Programm Pygments (https://pygments.org), welches sich mit `pip` installieren lässt:
 ```shell
 pip3 install pygments
+
+# Additional styles (github, monokai_light, railscasts)
+git clone git://github.com/thecodechef/pygments-style-extras.git
+cd pygments-style-extras
+python setup.py install
 ```
 Für die Konvertierung von LaTeX in ein PDF ist bei der Verwendung von `minted` zusätzlich noch die Option `-shell-escape` notwendig:
 ```shell
