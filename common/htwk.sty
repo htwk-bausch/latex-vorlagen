@@ -82,7 +82,7 @@
 % SI-Einheiten
 % Anleitung: https://www.namsu.de/Extra/pakete/Siunitx.html
 %-----------------------------------------------------------------------------
-\usepackage[locale=DE, binary-units=true]{siunitx}	% Formatierung von Zahlen
+\usepackage[locale=DE]{siunitx}	              % Formatierung von Zahlen und Einheiten
 
 % Zusätzliche Farben
 \usepackage{xcolor}
@@ -113,6 +113,7 @@
 \setminted[c]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg, breaklines}
 \setminted[python]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg}
 \setminted[verilog]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg, breaklines}
+\setminted[asm]{xleftmargin=20pt, linenos, baselinestretch=1.0, fontsize=\footnotesize, bgcolor=bg, breaklines}
 
 \usemintedstyle{monokai_light}
 %\setminted[c]{frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, bgcolor=bg}
@@ -163,3 +164,17 @@
 ]{hyperref}
 \renewcommand{\LayoutChoiceField}[2]{\leavevmode #2 #1}
 \renewcommand*{\arraystretch}{1.5}
+
+%-----------------------------------------------------------------------------
+% Sonstiges
+%-----------------------------------------------------------------------------
+
+% Verbesserung von underline (https://alexwlchan.net/2017/10/latex-underlines/)
+\usepackage{contour}
+\usepackage{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\renewcommand{\underline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
